@@ -1,0 +1,32 @@
+# Файлы и папки, которые не нужно загружать в репозиторий
+
+# Java / Maven / Gradle
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Директории сборки
+/target/
+/build/
+/out/
+
+# IntelliJ IDEA / Eclipse / NetBeans
+.idea/
+*.iml
+*.ipr
+*.iws
+*.class
+.classpath
+.project
+.settings/
+
+# ОС-специфичные файлы
+.DS_Store
+Thumbs.db
+
+# Конфигурации и кэш
+/.mvn/
+/.gradle/
+/node_modules/
