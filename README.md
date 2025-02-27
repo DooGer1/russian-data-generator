@@ -1,6 +1,6 @@
 # Russian Data Generator
 
-![Build](https://github.com/ВАШ_GITHUB_АККАУНТ/russian-data-generator/actions/workflows/build.yml/badge.svg)
+![Build](https://github.com/dooger1/russian-data-generator/actions/workflows/build.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
