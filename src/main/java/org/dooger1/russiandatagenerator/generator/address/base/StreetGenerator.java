@@ -1,25 +1,21 @@
 package org.dooger1.russiandatagenerator.generator.address.base;
 
 import org.dooger1.russiandatagenerator.base.DataGenerator;
+import org.dooger1.russiandatagenerator.utils.ResourceLoader;
 
+import java.util.List;
 import java.util.Random;
 
 public class StreetGenerator implements DataGenerator<String> {
-    private static final String[] STREETS = {
-            "Береговая", "Берёзовая", "Бульварная", "Волгоградская", "Восточная", "Гагарина", "Гвардейская", "Горная",
-            "Горького", "Дачная", "Декабристов", "Дружбы", "Есенина", "Западная", "Заречная", "Зелёная", "Калинина",
-            "Карла Маркса", "Кирова", "Колхозная", "Комсомольская", "Ленина", "Лесная", "Маяковского", "Механизаторов",
-            "Мира", "Мичурина", "Мичуринская", "Молодёжная", "Мостовая", "Набережная", "Новая", "Озерная", "Октябрьская",
-            "Парковая", "Первомайская", "Песчаная", "Пионерская", "Пролетарская", "Промышленная", "Профсоюзная", "Пушкина",
-            "Рабочая", "Радужная", "Революционная", "Речная", "Ромашковая", "Садовая", "Свободы", "Северная", "Сельская",
-            "Сиреневая", "Советская", "Солнечная", "Сосновая", "Спортивная", "Строителей", "Суворова", "Тихая", "Трактовая",
-            "Транспортная", "Труда", "Тургенева", "Уральская", "Фабричная", "Фестивальная", "Фрунзе", "Центральная",
-            "Чапаева", "Чкалова", "Школьная", "Энергетиков", "Юбилейная", "Южная", "Ягодная"
-    };
+    private final List<String> streets;
     private final Random random = new Random();
+
+    public StreetGenerator() {
+        this.streets = ResourceLoader.loadResourceFile("address/streets.txt");
+    }
 
     @Override
     public String generate() {
-        return "ул. " + STREETS[random.nextInt(STREETS.length)];
+        return "ул. " + streets.get(random.nextInt(streets.size()));
     }
 }

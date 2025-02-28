@@ -1,43 +1,43 @@
 package org.dooger1.russiandatagenerator.generator.identity;
 
 import org.dooger1.russiandatagenerator.base.DataGenerator;
+import org.dooger1.russiandatagenerator.utils.ResourceLoader;
 
+import java.util.List;
 import java.util.Random;
 
 public class PersonGenerator implements DataGenerator<String> {
-    private static final String[] FIRST_NAMES_MALE = {
-            "Авдей", "Александр", "Алексей", "Анатолий", "Андрей", "Антон", "Аркадий", "Артём", "Василий", "Виктор", "Владимир", "Дмитрий", "Евгений", "Иван", "Игорь", "Кирилл", "Максим", "Михаил", "Николай", "Олег", "Павел", "Роман", "Сергей", "Станислав", "Степан", "Тимофей", "Фёдор", "Юрий", "Ярослав"
-    };
-
-    private static final String[] FIRST_NAMES_FEMALE = {
-            "Александра", "Алина", "Анастасия", "Анна", "Валентина", "Валерия", "Варвара", "Вера", "Вероника", "Виктория", "Галина", "Дарья", "Екатерина", "Елена", "Елизавета", "Ирина", "Карина", "Ксения", "Лариса", "Лидия", "Любовь", "Маргарита", "Марина", "Мария", "Надежда", "Наталья", "Оксана", "Ольга", "Полина", "Светлана", "София", "Тамара", "Татьяна", "Юлия", "Яна"
-    };
-
-    private static final String[] LAST_NAMES = {
-            "Смирнов", "Иванов", "Кузнецов", "Соколов", "Попов", "Петров", "Лебедев", "Козлов", "Новиков", "Морозов", "Волков", "Соловьёв", "Васильев", "Зайцев", "Павлов", "Семёнов", "Виноградов", "Богданов", "Воробьёв", "Фёдоров", "Михайлов", "Беляев", "Сидоров", "Белов", "Комаров", "Орлов", "Киселёв", "Макаров", "Андреев", "Ковалёв", "Ильин", "Гусев", "Титов", "Кузьмин", "Кудрявцев", "Баранов", "Куликов", "Алексеев", "Степанов", "Яковлев"
-    };
-
-    private static final String[] MIDDLE_NAMES_MALE = {
-            "Александрович", "Алексеевич", "Анатольевич", "Андреевич", "Антонович", "Аркадьевич", "Артемович", "Васильевич", "Викторович", "Владимирович", "Дмитриевич", "Евгеньевич", "Иванович", "Игоревич", "Кириллович", "Максимович", "Михайлович", "Николаевич", "Олегович", "Павлович", "Романович", "Сергеевич", "Станиславович", "Степанович", "Тимофеевич", "Фёдорович", "Юрьевич", "Ярославович"
-    };
-
-    private static final String[] MIDDLE_NAMES_FEMALE = {
-            "Александровна", "Алексеевна", "Анатольевна", "Андреевна", "Антоновна", "Аркадьевна", "Артемовна", "Васильевна", "Викторовна", "Владимировна", "Дмитриевна", "Евгеньевна", "Ивановна", "Игоревна", "Кирилловна", "Максимовна", "Михайловна", "Николаевна", "Олеговна", "Павловна", "Романовна", "Сергеевна", "Станиславовна", "Степановна", "Тимофеевна", "Фёдоровна", "Юрьевна", "Ярославовна"
-    };
+    private static final List<String> FIRST_NAMES_MALE;
+    private static final List<String> FIRST_NAMES_FEMALE;
+    private static final List<String> LAST_NAMES;
+    private static final List<String> MIDDLE_NAMES_MALE;
+    private static final List<String> MIDDLE_NAMES_FEMALE;
 
     private final Random random = new Random();
+
+    static {
+        FIRST_NAMES_MALE = ResourceLoader.loadResourceFile("identity/first_names_male.txt");
+        FIRST_NAMES_FEMALE = ResourceLoader.loadResourceFile("identity/first_names_female.txt");
+        LAST_NAMES = ResourceLoader.loadResourceFile("identity/last_names.txt");
+        MIDDLE_NAMES_MALE = ResourceLoader.loadResourceFile("identity/middle_names_male.txt");
+        MIDDLE_NAMES_FEMALE = ResourceLoader.loadResourceFile("identity/middle_names_female.txt");
+    }
 
     @Override
     public String generate() {
         boolean isMale = random.nextBoolean();
-        String firstName = isMale ? FIRST_NAMES_MALE[random.nextInt(FIRST_NAMES_MALE.length)] : FIRST_NAMES_FEMALE[random.nextInt(FIRST_NAMES_FEMALE.length)];
-        String lastName = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
-        String middleName = isMale ? MIDDLE_NAMES_MALE[random.nextInt(MIDDLE_NAMES_MALE.length)] : MIDDLE_NAMES_FEMALE[random.nextInt(MIDDLE_NAMES_FEMALE.length)];
+        String firstName = isMale ? getRandomElement(FIRST_NAMES_MALE) : getRandomElement(FIRST_NAMES_FEMALE);
+        String lastName = getRandomElement(LAST_NAMES);
+        String middleName = isMale ? getRandomElement(MIDDLE_NAMES_MALE) : getRandomElement(MIDDLE_NAMES_FEMALE);
 
         if (!isMale) {
             lastName += "а"; // Добавляем окончание для женской фамилии
         }
 
         return lastName + " " + firstName + " " + middleName;
+    }
+
+    private String getRandomElement(List<String> list) {
+        return list.get(random.nextInt(list.size()));
     }
 }
