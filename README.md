@@ -1,5 +1,5 @@
 # Russian Data Generator
-
+![Maven Central](https://img.shields.io/maven-central/v/io.github.dooger1/russian-data-generator.svg)
 ![Build](https://github.com/DooGer1/russian-data-generator/actions/workflows/build.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
