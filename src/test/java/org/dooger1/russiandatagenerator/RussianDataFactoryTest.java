@@ -1,6 +1,7 @@
 package org.dooger1.russiandatagenerator;
 
 import org.dooger1.russiandatagenerator.generator.address.composite.AddressGenerator;
+import org.dooger1.russiandatagenerator.generator.address.composite.FullAddressGenerator;
 import org.dooger1.russiandatagenerator.generator.contact.PhoneNumberGenerator;
 import org.dooger1.russiandatagenerator.generator.identity.InnGenerator;
 import org.dooger1.russiandatagenerator.generator.identity.PersonGenerator;
@@ -96,7 +97,7 @@ public class RussianDataFactoryTest {
         AddressGenerator generator = new AddressGenerator();
         String address = generator.generate();
         assertNotNull(address);
-        assertTrue(address.matches("^[А-Яа-яЁё\\-\\s]+, [А-Яа-яЁё\\-\\s]+, ул\\. [А-Яа-яЁё\\-\\s]+, д\\. \\d+, \\d{6}$"),
+        assertTrue(address.matches("^[А-Яа-яЁё\\-\\s]+, ул\\. [А-Яа-яЁё\\d\\-\\s]+, д\\. \\d+$"),
                 "Формат адреса неверный: " + address);
     }
 
@@ -107,9 +108,25 @@ public class RussianDataFactoryTest {
         assertEquals(5, addresses.size(), "Должно быть сгенерировано 5 адресов");
 
         addresses.forEach(address -> {
-            assertNotNull(address);
-            assertTrue(address.matches("^[А-Яа-яЁё\\-\\s]+, [А-Яа-яЁё\\-\\s]+, ул\\. [А-Яа-яЁё\\d\\-\\s]+, д\\. \\d+, \\d{6}$"),
-                    "Формат адреса неверный: " + address);
+            assertNotNull(address, "Адрес не должен быть null");
+            assertTrue(
+                    address.matches("^[А-Яа-яЁё\\-\\s]+, ул\\. [А-Яа-яЁё\\d\\-\\s]+, д\\. \\d+$"),
+                    "Формат адреса неверный: " + address
+            );
+        });
+    }
+    @Test
+    void testGenerateMultipleFullAddresses() {
+        FullAddressGenerator generator = new FullAddressGenerator();
+        List<String> addresses = generator.size(5);
+        assertEquals(5, addresses.size(), "Должно быть сгенерировано 5 полных адресов");
+
+        addresses.forEach(address -> {
+            assertNotNull(address, "Полный адрес не должен быть null");
+            assertTrue(
+                    address.matches("^[А-Яа-яЁё\\-\\s]+, [А-Яа-яЁё\\-\\s]+, ул\\. [А-Яа-яЁё\\d\\-\\s]+, д\\. \\d+, \\d{6}$"),
+                    "Формат полного адреса неверный: " + address
+            );
         });
     }
 }
