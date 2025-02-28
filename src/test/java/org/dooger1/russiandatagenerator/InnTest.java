@@ -1,7 +1,9 @@
 package org.dooger1.russiandatagenerator;
 
+import org.dooger1.russiandatagenerator.generator.identity.InnGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 public class InnTest {
 
@@ -15,8 +17,31 @@ public class InnTest {
         assertTrue(inn.matches("\\d{12}"), "ИНН должен содержать только цифры");
 
         int[] innDigits = inn.chars().map(c -> c - '0').toArray();
-        assertEquals(calculateCRC1(innDigits), innDigits[10], "Неверная контрольная сумма CRC1");
-        assertEquals(calculateCRC2(innDigits), innDigits[11], "Неверная контрольная сумма CRC2");
+        int expectedCrc1 = calculateCRC1(innDigits);
+        int expectedCrc2 = calculateCRC2(innDigits);
+
+        assertEquals(expectedCrc1, innDigits[10], "Неверная контрольная сумма CRC1");
+        assertEquals(expectedCrc2, innDigits[11], "Неверная контрольная сумма CRC2");
+    }
+
+    @Test
+    void testGenerateMultipleInns() {
+        InnGenerator generator = new InnGenerator();
+        List<String> inns = generator.size(5);
+
+        assertEquals(5, inns.size(), "Должно быть сгенерировано 5 ИНН");
+        inns.forEach(inn -> {
+            assertNotNull(inn, "ИНН не должен быть null");
+            assertEquals(12, inn.length(), "ИНН должен состоять из 12 цифр");
+            assertTrue(inn.matches("\\d{12}"), "ИНН должен содержать только цифры");
+
+            int[] innDigits = inn.chars().map(c -> c - '0').toArray();
+            int expectedCrc1 = calculateCRC1(innDigits);
+            int expectedCrc2 = calculateCRC2(innDigits);
+
+            assertEquals(expectedCrc1, innDigits[10], "Неверная контрольная сумма CRC1");
+            assertEquals(expectedCrc2, innDigits[11], "Неверная контрольная сумма CRC2");
+        });
     }
 
     private int calculateCRC1(int[] num) {
@@ -25,7 +50,8 @@ public class InnTest {
         for (int i = 0; i < 10; i++) {
             crc += num[i] * K1[i];
         }
-        return crc % 11;
+        crc %= 11;
+        return (crc == 10) ? 0 : crc; // Теперь в тесте тоже заменяем 10 на 0
     }
 
     private int calculateCRC2(int[] num) {
@@ -35,6 +61,6 @@ public class InnTest {
             crc += num[i] * K2[i];
         }
         crc %= 11;
-        return (crc == 10) ? 0 : crc;
+        return (crc == 10) ? 0 : crc; // Теперь в тесте тоже заменяем 10 на 0
     }
 }

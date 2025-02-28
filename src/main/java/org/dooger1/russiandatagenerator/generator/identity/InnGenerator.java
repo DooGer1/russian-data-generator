@@ -1,4 +1,6 @@
-package org.dooger1.russiandatagenerator;
+package org.dooger1.russiandatagenerator.generator.identity;
+
+import org.dooger1.russiandatagenerator.base.DataGenerator;
 
 import java.util.Random;
 
@@ -30,7 +32,8 @@ public class InnGenerator implements DataGenerator<String> {
         for (int i = 0; i < 10; i++) {
             crc += num[i] * K1[i];
         }
-        return crc % 11;
+        crc %= 11;
+        return (crc == 10) ? 0 : crc; // Исправлено, теперь 10 заменяется на 0
     }
 
     private int calculateCRC2(int[] num) {

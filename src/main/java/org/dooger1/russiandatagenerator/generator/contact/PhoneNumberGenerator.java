@@ -1,4 +1,6 @@
-package org.dooger1.russiandatagenerator;
+package org.dooger1.russiandatagenerator.generator.contact;
+
+import org.dooger1.russiandatagenerator.base.DataGenerator;
 
 import java.util.Random;
 

@@ -1,8 +1,10 @@
-package org.dooger1.russiandatagenerator;
+package org.dooger1.russiandatagenerator.generator.address;
+
+import org.dooger1.russiandatagenerator.base.DataGenerator;
 
 import java.util.Random;
 
-public class AddressGenerator implements DataGenerator<String> {
+public class StreetGenerator implements DataGenerator<String> {
     private static final String[] STREETS = {
             "Береговая", "Берёзовая", "Бульварная", "Волгоградская", "Восточная", "Гагарина", "Гвардейская", "Горная",
             "Горького", "Дачная", "Декабристов", "Дружбы", "Есенина", "Западная", "Заречная", "Зелёная", "Калинина",
@@ -14,12 +16,10 @@ public class AddressGenerator implements DataGenerator<String> {
             "Транспортная", "Труда", "Тургенева", "Уральская", "Фабричная", "Фестивальная", "Фрунзе", "Центральная",
             "Чапаева", "Чкалова", "Школьная", "Энергетиков", "Юбилейная", "Южная", "Ягодная"
     };
-
     private final Random random = new Random();
 
     @Override
     public String generate() {
-        int house = random.nextInt(100) + 1;
-        return "ул. " + STREETS[random.nextInt(STREETS.length)] + ", д. " + house;
+        return "ул. " + STREETS[random.nextInt(STREETS.length)];
     }
 }

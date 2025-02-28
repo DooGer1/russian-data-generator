@@ -1,7 +1,9 @@
 package org.dooger1.russiandatagenerator;
 
+import org.dooger1.russiandatagenerator.generator.address.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 import java.util.Map;
 
 public class AddressTest {
@@ -12,6 +14,10 @@ public class AddressTest {
         String region = generator.generate();
         assertNotNull(region, "Регион не должен быть null");
         assertFalse(region.isEmpty(), "Регион не должен быть пустым");
+
+        List<String> regions = generator.size(5);
+        assertEquals(5, regions.size(), "Должно быть сгенерировано 5 регионов");
+        regions.forEach(r -> assertNotNull(r));
     }
 
     @Test
@@ -20,6 +26,10 @@ public class AddressTest {
         String district = generator.generate();
         assertNotNull(district, "Район не должен быть null");
         assertFalse(district.isEmpty(), "Район не должен быть пустым");
+
+        List<String> districts = generator.size(5);
+        assertEquals(5, districts.size(), "Должно быть сгенерировано 5 районов");
+        districts.forEach(d -> assertNotNull(d));
     }
 
     @Test
@@ -28,6 +38,10 @@ public class AddressTest {
         String city = generator.generate();
         assertNotNull(city, "Город не должен быть null");
         assertFalse(city.isEmpty(), "Город не должен быть пустым");
+
+        List<String> cities = generator.size(5);
+        assertEquals(5, cities.size(), "Должно быть сгенерировано 5 городов");
+        cities.forEach(c -> assertNotNull(c));
     }
 
     @Test
@@ -36,6 +50,10 @@ public class AddressTest {
         String street = generator.generate();
         assertNotNull(street, "Улица не должна быть null");
         assertFalse(street.isEmpty(), "Улица не должна быть пустой");
+
+        List<String> streets = generator.size(5);
+        assertEquals(5, streets.size(), "Должно быть сгенерировано 5 улиц");
+        streets.forEach(s -> assertNotNull(s));
     }
 
     @Test
@@ -45,6 +63,10 @@ public class AddressTest {
         String postalCode = generator.generate(region);
         assertNotNull(postalCode, "Почтовый индекс не должен быть null");
         assertTrue(postalCode.matches("\\d{6}"), "Почтовый индекс должен состоять из 6 цифр");
+
+        List<String> postalCodes = generator.size(5);
+        assertEquals(5, postalCodes.size(), "Должно быть сгенерировано 5 почтовых индексов");
+        postalCodes.forEach(pc -> assertTrue(pc.matches("\\d{6}")));
     }
 
     @Test
@@ -63,5 +85,9 @@ public class AddressTest {
         Map<String, String> regionPostalCodeMap = PostalCodeGenerator.getRegionPostalCodeMap();
         assertTrue(regionPostalCodeMap.containsKey(region), "Регион должен быть в списке");
         assertTrue(postalCode.startsWith(regionPostalCodeMap.get(region)), "Почтовый индекс должен соответствовать региону");
+
+        List<String> fullAddresses = generator.size(5);
+        assertEquals(5, fullAddresses.size(), "Должно быть сгенерировано 5 полных адресов");
+        fullAddresses.forEach(addr -> assertNotNull(addr));
     }
 }

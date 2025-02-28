@@ -1,4 +1,6 @@
-package org.dooger1.russiandatagenerator;
+package org.dooger1.russiandatagenerator.generator.address;
+
+import org.dooger1.russiandatagenerator.base.DataGenerator;
 
 import java.util.Random;
 
@@ -402,7 +404,6 @@ public class CityGenerator implements DataGenerator<String> {
             "Кедровый",
             "Кемерово",
             "Кемь",
-            "Керчьне призн.",
             "Кизел",
             "Кизилюрт",
             "Кизляр",
