@@ -4,9 +4,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.dooger1</groupId>
+    <groupId>io.github.dooger1</groupId>
     <artifactId>russian-data-generator</artifactId>
     <version>1.0.0</version>
+    <name>Russian Data Generator</name>
+    <description>Библиотека для генерации случайных российских данных: ФИО, ИНН, СНИЛС, адресов и номеров телефонов.</description>
+
+    <url>https://github.com/DooGer1/russian-data-generator</url>
+
+    <scm>
+        <url>https://github.com/DooGer1/russian-data-generator</url>
+        <connection>scm:git:git://github.com/DooGer1/russian-data-generator.git</connection>
+        <developerConnection>scm:git:ssh://github.com/DooGer1/russian-data-generator.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>dooger1</id>
+            <name>Kirill</name>
+            <email>kirille3@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -40,6 +68,58 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>0.7.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <publishingServerId>central</publishingServerId>
+                    </configuration>
+                </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Плагин для сборки исходников -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
     </build>
 </project>

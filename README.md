@@ -1,65 +1,51 @@
 # Russian Data Generator
 
-![Build](https://github.com/dooger1/russian-data-generator/actions/workflows/build.yml/badge.svg)
+![Build](https://github.com/DooGer1/russian-data-generator/actions/workflows/build.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/coverage-96%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-### Установка через релиз на GitHub
-Скачайте `JAR`-файл последнего релиза:  
-👉 [Скачать Russian Data Generator v1.0.0](https://github.com/DooGer1/russian-data-generator/releases/latest)
-
-
 ## Описание
-**Russian Data Generator** — это библиотека на Java, предназначенная для генерации случайных данных, соответствующих российскому формату. Она может использоваться для тестирования, заполнения баз данных, а также анонимизации данных. Библиотека позволяет генерировать:
+**Russian Data Generator** — это библиотека на Java для генерации случайных данных, соответствующих российскому формату. Она используется для тестирования, заполнения баз данных и анонимизации данных.
 
-- ФИО (Фамилия, Имя, Отчество)
-- ИНН физических лиц (12 знаков)
-- СНИЛС (страховой номер индивидуального лицевого счета)
-- Адреса (область, район, город, улица, индекс, полный адрес)
-- Номера телефонов
-
-## Совместимость
-Библиотека написана на Java и поддерживает версии **Java 8 и выше**.
+**Возможности**:
+- Генерация **ФИО** (Фамилия, Имя, Отчество)
+- Генерация **ИНН** (12-значного для физических лиц)
+- Генерация **СНИЛС** (страхового номера индивидуального лицевого счета)
+- Генерация **адресов** (область, район, город, улица, индекс, полный адрес)
+- Генерация **номеров телефонов**
 
 ## Установка
-### Установка через релиз на GitHub
-1. Перейдите в раздел **Releases** репозитория:  
-   [GitHub Releases](https://github.com/ВАШ_GITHUB_АККАУНТ/russian-data-generator/releases)
-2. Скачайте `JAR`-файл последнего релиза (`russian-data-generator-1.0.0.jar`).
-3. Подключите библиотеку в ваш проект.
+### **Через Maven Central**
+Библиотека доступна в **Maven Central** и может быть подключена напрямую.
 
-#### Для **Maven**-проекта
-1. Скопируйте скачанный `JAR` в локальный репозиторий Maven:
-   ```sh
-   mvn install:install-file -Dfile=путь_до_JAR -DgroupId=org.dooger1 -DartifactId=russian-data-generator -Dversion=1.0.0 -Dpackaging=jar
-   ```
-2. Добавьте зависимость в `pom.xml`:
-   ```xml
-   <dependency>
-       <groupId>org.dooger1</groupId>
-       <artifactId>russian-data-generator</artifactId>
-       <version>1.0.0</version>
-   </dependency>
-   ```
+#### **Maven**
+Добавьте зависимость в `pom.xml`:
+```xml
+<dependency>
+    <groupId>io.github.dooger1</groupId>
+    <artifactId>russian-data-generator</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
-#### Для **Gradle**-проекта
-1. Переместите скачанный `JAR` в папку `libs` внутри проекта.
-2. Добавьте в `build.gradle`:
-   ```gradle
-   repositories {
-       flatDir {
-           dirs 'libs'
-       }
-   }
-   dependencies {
-       implementation name: 'russian-data-generator-1.0.0'
-   }
-   ```
+#### **Gradle (Kotlin DSL)**
+```kotlin
+dependencies {
+    implementation("io.github.dooger1:russian-data-generator:1.0.0")
+}
+```
+
+#### **Gradle (Groovy DSL)**
+```gradle
+dependencies {
+    implementation 'io.github.dooger1:russian-data-generator:1.0.0'
+}
+```
 
 ## Использование
-### Генерация ФИО
+### **Генерация ФИО**
 ```java
-import org.dooger1.russiandatagenerator.PersonGenerator;
+import io.github.dooger1.russiandatagenerator.PersonGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -70,9 +56,9 @@ public class Main {
 }
 ```
 
-### Генерация ИНН
+### **Генерация ИНН**
 ```java
-import org.dooger1.russiandatagenerator.InnGenerator;
+import io.github.dooger1.russiandatagenerator.InnGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -83,9 +69,9 @@ public class Main {
 }
 ```
 
-### Генерация СНИЛС
+### **Генерация СНИЛС**
 ```java
-import org.dooger1.russiandatagenerator.SnilsGenerator;
+import io.github.dooger1.russiandatagenerator.SnilsGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -96,9 +82,9 @@ public class Main {
 }
 ```
 
-### Генерация полного адреса
+### **Генерация полного адреса**
 ```java
-import org.dooger1.russiandatagenerator.FullAddressGenerator;
+import io.github.dooger1.russiandatagenerator.FullAddressGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -109,14 +95,10 @@ public class Main {
 }
 ```
 
-## Локализация
-Библиотека поддерживает генерацию данных только в российском формате.
-
 ## Лицензия
 **Russian Data Generator** распространяется под лицензией **MIT**.
 
-## Авторы
-- **dooger1** - основной разработчик
-
-Если у вас есть предложения или ошибки, пожалуйста, создавайте issue на GitHub-репозитории проекта.
+## Контакты
+Если у вас есть предложения или ошибки, пожалуйста, создавайте issue на GitHub:  
+🔗 [https://github.com/DooGer1/russian-data-generator/issues](https://github.com/DooGer1/russian-data-generator/issues)
 
