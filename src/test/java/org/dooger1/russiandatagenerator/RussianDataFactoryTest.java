@@ -1,6 +1,6 @@
 package org.dooger1.russiandatagenerator;
 
-import org.dooger1.russiandatagenerator.generator.address.AddressGenerator;
+import org.dooger1.russiandatagenerator.generator.address.composite.AddressGenerator;
 import org.dooger1.russiandatagenerator.generator.contact.PhoneNumberGenerator;
 import org.dooger1.russiandatagenerator.generator.identity.InnGenerator;
 import org.dooger1.russiandatagenerator.generator.identity.PersonGenerator;

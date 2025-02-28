@@ -1,6 +1,10 @@
-package org.dooger1.russiandatagenerator.generator.address;
+package org.dooger1.russiandatagenerator.generator.address.composite;
 
 import org.dooger1.russiandatagenerator.base.DataGenerator;
+import org.dooger1.russiandatagenerator.generator.address.base.CityGenerator;
+import org.dooger1.russiandatagenerator.generator.address.base.PostalCodeGenerator;
+import org.dooger1.russiandatagenerator.generator.address.base.RegionGenerator;
+import org.dooger1.russiandatagenerator.generator.address.base.StreetGenerator;
 
 import java.util.Random;
 

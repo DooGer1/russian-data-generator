@@ -1,4 +1,4 @@
-package org.dooger1.russiandatagenerator.generator.address;
+package org.dooger1.russiandatagenerator.generator.address.base;
 
 import org.dooger1.russiandatagenerator.base.DataGenerator;
 

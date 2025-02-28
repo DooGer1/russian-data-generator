@@ -1,6 +1,7 @@
 package org.dooger1.russiandatagenerator;
 
-import org.dooger1.russiandatagenerator.generator.address.*;
+import org.dooger1.russiandatagenerator.generator.address.base.*;
+import org.dooger1.russiandatagenerator.generator.address.composite.FullAddressGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
