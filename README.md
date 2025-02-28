@@ -40,7 +40,7 @@ dependencies {
 ## Использование
 ### **Генерация ФИО**
 ```java
-import io.github.dooger1.russiandatagenerator.PersonGenerator;
+import org.dooger1.russiandatagenerator.generator.identity.PersonGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,7 +59,7 @@ fullNames.forEach(System.out::println);
 
 ### **Генерация ИНН**
 ```java
-import io.github.dooger1.russiandatagenerator.InnGenerator;
+import org.dooger1.russiandatagenerator.generator.identity.PersonGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class Main {
 
 ### **Генерация полного адреса**
 ```java
-import io.github.dooger1.russiandatagenerator.FullAddressGenerator;
+import org.dooger1.russiandatagenerator.generator.address.composite.FullAddressGenerator;
 
 public class Main {
     public static void main(String[] args) {
@@ -91,7 +91,7 @@ addresses.forEach(System.out::println);
 
 ### **Генерация номеров телефонов**
 ```java
-import io.github.dooger1.russiandatagenerator.PhoneNumberGenerator;
+import org.dooger1.russiandatagenerator.generator.contact.PhoneNumberGenerator;
 
 public class Main {
     public static void main(String[] args) {
