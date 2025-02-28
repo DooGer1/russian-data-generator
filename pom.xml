@@ -6,7 +6,7 @@
 
     <groupId>io.github.dooger1</groupId>
     <artifactId>russian-data-generator</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>Russian Data Generator</name>
     <description>Библиотека для генерации случайных российских данных: ФИО, ИНН, СНИЛС, адресов и номеров телефонов.</description>
 
